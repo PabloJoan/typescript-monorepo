@@ -1,17 +1,17 @@
-import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createFeedbackSchema, CreateFeedbackInput } from "@repo/shared";
 import { trpc } from "../trpc";
 
 export function CreateFeedbackForm() {
+  // eslint-disable-next-line react-compiler/react-compiler
+  "use no memo";
+
   const {
     register,
     handleSubmit,
     reset,
-    watch,
-    trigger,
-    formState: { errors, isSubmitting, submitCount },
+    formState: { errors, isSubmitting },
   } = useForm<CreateFeedbackInput>({
     resolver: zodResolver(createFeedbackSchema),
     defaultValues: { title: "", description: "" },
@@ -26,22 +26,7 @@ export function CreateFeedbackForm() {
     },
   });
 
-  useEffect(() => {
-    // this is to get zodResolver working again after first submit.
-    // https://github.com/react-hook-form/resolvers/issues/671
-    // this causes the component to rerender after first submit and onchange
-    // after that. This disables memoization from react compiler
-    if (submitCount === 0) {
-      return;
-    }
-
-    // eslint-disable-next-line react-hooks/incompatible-library
-    const subscription = watch(() => trigger());
-    return () => subscription.unsubscribe();
-  }, [watch, trigger, submitCount]);
-
   const onSubmit: SubmitHandler<CreateFeedbackInput> = (data) => {
-    console.log(data);
     createMutation.mutate(data);
   };
 
