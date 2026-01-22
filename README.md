@@ -110,30 +110,30 @@ Add a new procedure in `apps/server/src/router.ts`.
 
 ```typescript
 export const appRouter = router({
-    newUser: publicProcedure
-        .input(newUserSchema) // Type-safe input from shared package
-        .mutation(async ({ input }) => {
-            // Database logic here
-        }),
+  newUser: publicProcedure
+    .input(newUserSchema) // Type-safe input from shared package
+    .mutation(async ({ input }) => {
+      // Database logic here
+    }),
 });
 ```
 
 ### 4. Frontend Routes & UI
 
 - **Add Route**: Create a new file in `apps/client/src/routes/`.
-    - `about.tsx` -> `/about`
-    - `posts/$postId.tsx` -> `/posts/123`
+  - `about.tsx` -> `/about`
+  - `posts/$postId.tsx` -> `/posts/123`
 - **Fetch Data**: Use the tRPC hook inside the component.
 
 ```tsx
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/about")({
-    component: About,
+  component: About,
 });
 
 function About() {
-    return <div>About Page</div>;
+  return <div>About Page</div>;
 }
 ```
 

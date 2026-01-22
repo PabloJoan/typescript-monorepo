@@ -37,7 +37,7 @@ export function CreateFeedbackForm() {
       onSubmit={handleSubmit(onSubmit)}
       className="bg-white p-6 rounded-lg shadow-md border border-gray-100 mb-8"
     >
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">Given Feedback</h2>
+      <h2 className="text-2xl font-bold text-gray-800 mb-6">Give Feedback</h2>
 
       <div className="mb-4">
         <label
