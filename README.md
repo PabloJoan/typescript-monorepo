@@ -1,15 +1,15 @@
 # Feedback Board Monorepo
 
-This project is a full-stack TypeScript monorepo designed for scalability and code sharing.
+This project is a full-stack TypeScript monorepo.
 
-## 🏗 Architecture
+## Architecture
 
 - **Frontend**: [React 19](https://react.dev/), [Vite](https://vitejs.dev/), [Tailwind CSS](https://tailwindcss.com/) (Styling), [Zustand](https://zustand.docs.pmnd.rs/) (State), [TanStack Router](https://tanstack.com/router) (Routing), [tRPC](https://trpc.io/) (API Client).
 - **Backend**: [Node.js](https://nodejs.org/), [Express](https://expressjs.com/), [tRPC](https://trpc.io/) (API Server), [Drizzle ORM](https://orm.drizzle.team/) (Postgres), [Elasticsearch](https://www.elastic.co/) (Search).
 - **Infrastructure**: Docker Compose managing Node containers, PostgreSQL 18, and Elasticsearch 9.
 - **Tooling**: [pnpm](https://pnpm.io/) (Workspaces), [ESLint](https://eslint.org/) (Strict Linting), [Prettier](https://prettier.io/).
 
-## 📂 Directory Structure
+## Directory Structure
 
 ```text
 /
@@ -24,16 +24,17 @@ This project is a full-stack TypeScript monorepo designed for scalability and co
 │   │   │   └── trpc.ts    # tRPC Client Setup
 │   └── server/          # Express + tRPC Backend
 │       ├── src/
-│       │   ├── db/      # Drizzle Schema & Config
-│       │   ├── lib/     # External Clients (Elasticsearch)
-│       │   └── router.ts# tRPC API Routers
+│       │   ├── db/         # Drizzle Schema & Config
+│       │   ├── lib/        # Shared business logic
+|       |   ├── controller/ # Functions that are assigned to routes in router.ts
+│       │   └── router.ts   # tRPC API Routers
 ├── packages/
 │   └── shared/          # Shared Zod Schemas & Types
 ├── docker/              # Dockerfiles for apps
 └── docker-compose.yml   # Local development orchestration
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -77,7 +78,7 @@ Use `./dev.sh stop` to stop the stack and clean up.
 - **Hot Reload**: Changes to `apps/client` or `apps/server` source files will automatically trigger updates in the running containers.
 - **Logs**: View logs in the terminal running Docker Compose.
 
-## 🛠 implementing New Features
+## implementing New Features
 
 ### 1. Database Changes
 
@@ -145,7 +146,7 @@ Use in components:
 const count = useMyStore((state) => state.count);
 ```
 
-## 🔒 Configuration
+## Configuration
 
 - **Environment**: Managed via `.env` file (copied from `.env.example`).
 - **Linting**: Run `./dev.sh lint` to check code quality. Configuration in `eslint.config.js`.
