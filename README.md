@@ -19,7 +19,6 @@ This project is a full-stack TypeScript monorepo.
 │   │   │   ├── components # UI Components
 │   │   │   ├── routes/    # File-Based Routes
 │   │   │   ├── store/     # Zustand Stores
-│   │   │   ├── routeTree.gen.ts # Auto-Generated Routes
 │   │   │   ├── main.tsx   # Entry & Providers
 │   │   │   └── trpc.ts    # tRPC Client Setup
 │   └── server/          # Express + tRPC Backend

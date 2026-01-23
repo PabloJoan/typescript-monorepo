@@ -28,7 +28,7 @@ case "$1" in
         ;;
     stop)
         docker compose down
-        docker system prune --volumes
+        docker system prune -f --volumes
         ;;
     lint)
         echo "Linting entire monorepo..."
