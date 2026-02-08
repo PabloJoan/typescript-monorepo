@@ -1,12 +1,12 @@
-# Feedback Board Monorepo
+# Typescript Monorepo
 
 This project is a full-stack TypeScript monorepo.
 
 ## Architecture
 
-- **Frontend**: [React 19](https://react.dev/), [Vite](https://vitejs.dev/), [Tailwind CSS](https://tailwindcss.com/) (Styling), [Zustand](https://zustand.docs.pmnd.rs/) (State), [TanStack Router](https://tanstack.com/router) (Routing), [tRPC](https://trpc.io/) (API Client).
-- **Backend**: [Node.js](https://nodejs.org/), [Express](https://expressjs.com/), [tRPC](https://trpc.io/) (API Server), [Drizzle ORM](https://orm.drizzle.team/) (Postgres), [Elasticsearch](https://www.elastic.co/) (Search).
-- **Infrastructure**: Docker Compose managing Node containers, PostgreSQL 18, and Elasticsearch 9.
+- **Frontend**: [React 19](https://react.dev/), [Vite](https://vitejs.dev/), [Zustand](https://zustand.docs.pmnd.rs/) (State), [TanStack Router](https://tanstack.com/router) (Routing), [tRPC](https://trpc.io/) (API Client).
+- **Backend**: [Node.js](https://nodejs.org/), [Express](https://expressjs.com/), [tRPC](https://trpc.io/) (API Server), [Drizzle ORM](https://orm.drizzle.team/) (Postgres).
+- **Infrastructure**: Docker Compose managing Node containers, PostgreSQL 18.
 - **Tooling**: [pnpm](https://pnpm.io/) (Workspaces), [ESLint](https://eslint.org/) (Strict Linting), [Prettier](https://prettier.io/).
 
 ## Directory Structure
@@ -75,7 +75,6 @@ Use `./dev.sh stop` to stop the stack and clean up.
 
 - **Frontend**: [http://localhost:5173](http://localhost:5173) (Vite Dev Server)
 - **Backend**: [http://localhost:4000](http://localhost:4000) (Express Server)
-- **Elasticsearch**: [http://localhost:9200](http://localhost:9200)
 
 ### Development Workflow
 

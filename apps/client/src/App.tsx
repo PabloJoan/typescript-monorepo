@@ -2,11 +2,18 @@ import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
 import { trpc } from "./trpc";
+import { useAuthStore } from "./store/useAuthStore";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
+import { CircularProgress } from "@mui/material";
 
 // Create a new router instance
-const router = createRouter({ routeTree });
+const router = createRouter({
+  routeTree,
+  context: {
+    auth: { isAuthenticated: false },
+  },
+});
 
 // Register the router instance for type safety
 declare module "@tanstack/react-router" {
@@ -16,6 +23,26 @@ declare module "@tanstack/react-router" {
   }
 }
 
+function AuthWrapper() {
+  const {
+    data: session,
+    isLoading,
+    isFetching,
+  } = trpc.auth.checkSession.useQuery(undefined, {
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    retry: false,
+  });
+
+  if (isLoading || isFetching) {
+    return <CircularProgress />;
+  }
+
+  const auth = { isAuthenticated: !!session?.authenticated };
+  return <RouterProvider router={router} context={{ auth }} />;
+}
+
 export function App() {
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
@@ -23,6 +50,11 @@ export function App() {
       links: [
         httpBatchLink({
           url: `${import.meta.env.VITE_BACKEND_URL}/trpc`,
+          headers() {
+            return {
+              Authorization: useAuthStore.getState().token || "",
+            };
+          },
         }),
       ],
     }),
@@ -31,7 +63,7 @@ export function App() {
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
+        <AuthWrapper />
       </QueryClientProvider>
     </trpc.Provider>
   );

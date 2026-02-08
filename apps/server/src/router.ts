@@ -1,33 +1,16 @@
-import { router, publicProcedure } from "./trpc";
-import {
-  createFeedbackSchema,
-  deleteFeedbackSchema,
-  helloSchema,
-  upvoteFeedbackSchema,
-} from "@repo/shared";
-import { createFeedback } from "./controller/feedback/createFeedback";
-import { listFeedback } from "./controller/feedback/listFeedback";
-import { upvoteFeedback } from "./controller/feedback/upvoteFeedback";
-import { deleteFeedback } from "./controller/feedback/deleteFeedback";
+import { protectedProcedure, router, publicProcedure } from "./trpc";
+import { helloSchema, loginSchema } from "@repo/shared";
 import { hello } from "./controller/hello";
+import { login } from "./controller/auth/login";
+import { logout } from "./controller/auth/logout";
+import { checkSession } from "./controller/auth/checkSession";
 
 export const appRouter = router({
   hello: publicProcedure.input(helloSchema).query(hello),
-
-  feedback: router({
-    list: publicProcedure.query(listFeedback),
-
-    create: publicProcedure
-      .input(createFeedbackSchema)
-      .mutation(createFeedback),
-
-    upvote: publicProcedure
-      .input(upvoteFeedbackSchema)
-      .mutation(upvoteFeedback),
-
-    delete: publicProcedure
-      .input(deleteFeedbackSchema)
-      .mutation(deleteFeedback),
+  auth: router({
+    login: publicProcedure.input(loginSchema).mutation(login),
+    logout: protectedProcedure.mutation(logout),
+    checkSession: protectedProcedure.query(checkSession),
   }),
 });
 

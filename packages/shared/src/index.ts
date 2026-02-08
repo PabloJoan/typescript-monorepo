@@ -1,14 +1,9 @@
 import { z } from "zod";
 
 export const helloSchema = z.object({ name: z.string().optional() });
+export type HelloSchema = z.infer<typeof helloSchema>;
 
-export const createFeedbackSchema = z.object({
-  title: z.string().min(1, "Title is required"),
-  description: z.string().min(1, "Description is required"),
+export const loginSchema = z.object({
+  uuid: z.uuid(),
 });
-
-export const upvoteFeedbackSchema = z.object({ id: z.string() });
-
-export const deleteFeedbackSchema = z.object({ id: z.string() });
-
-export type CreateFeedbackInput = z.infer<typeof createFeedbackSchema>;
+export type LoginSchema = z.infer<typeof loginSchema>;
