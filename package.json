@@ -10,21 +10,21 @@
     "test": "pnpm -r test"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
-    "@tanstack/eslint-plugin-query": "^5.91.4",
-    "@types/node": "^25.2.2",
-    "eslint": "^9.39.2",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-only-warn": "^1.1.0",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-compiler": "19.1.0-rc.2",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.26",
-    "globals": "^17.3.0",
-    "prettier": "^3.8.1",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.54.0"
+    "@eslint/js": "^9",
+    "@tanstack/eslint-plugin-query": "*",
+    "@types/node": "*",
+    "eslint": "^9",
+    "eslint-config-prettier": "*",
+    "eslint-plugin-jsx-a11y": "*",
+    "eslint-plugin-only-warn": "*",
+    "eslint-plugin-react": "*",
+    "eslint-plugin-react-compiler": ">=19.1.0-rc.2",
+    "eslint-plugin-react-hooks": "*",
+    "eslint-plugin-react-refresh": "*",
+    "globals": "*",
+    "prettier": "*",
+    "typescript": "*",
+    "typescript-eslint": "*"
   },
   "packageManager": "pnpm@10.0.0"
 }

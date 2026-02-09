@@ -57,6 +57,7 @@ export default [
     react.configs.flat["jsx-runtime"],
     jsxA11y.flatConfigs.recommended,
     query.configs["flat/recommended"],
+    reactCompiler.configs.recommended,
   ]
     .flat()
     .map((config) => ({

@@ -14,25 +14,25 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "jsonwebtoken": "^9.0.3",
+    "jsonwebtoken": "*",
     "@repo/shared": "workspace:*",
-    "@trpc/server": "^11.8.1",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "drizzle-orm": "^0.45.1",
-    "express": "^5.2.1",
-    "pg": "^8.17.2",
-    "zod": "^4.3.5"
+    "@trpc/server": "*",
+    "cors": "*",
+    "dotenv": "*",
+    "drizzle-orm": "*",
+    "express": "*",
+    "pg": "*",
+    "zod": "*"
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^9.0.10",
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.6",
-    "@types/node": "^25.0.10",
-    "@types/pg": "^8.16.0",
-    "drizzle-kit": "^0.31.9",
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.3",
-    "vitest": "^4.0.18"
+    "@types/jsonwebtoken": "*",
+    "@types/cors": "*",
+    "@types/express": "*",
+    "@types/node": "*",
+    "@types/pg": "*",
+    "drizzle-kit": "*",
+    "tsx": "*",
+    "typescript": "*",
+    "vitest": "*"
   }
 }
