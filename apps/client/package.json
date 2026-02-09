@@ -20,7 +20,7 @@
     "@repo/server": "workspace:*",
     "@repo/shared": "workspace:*",
     "@tanstack/react-query": "^5.90.20",
-    "@tanstack/react-router": "^1.154.7",
+    "@tanstack/react-router": "^1.159.4",
     "@trpc/client": "^11.9.0",
     "@trpc/react-query": "^11.8.1",
     "react": "^19.2.3",
