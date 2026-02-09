@@ -21,7 +21,7 @@
     "@repo/shared": "workspace:*",
     "@tanstack/react-query": "^5.90.19",
     "@tanstack/react-router": "^1.154.7",
-    "@trpc/client": "^11.8.1",
+    "@trpc/client": "^11.9.0",
     "@trpc/react-query": "^11.8.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
