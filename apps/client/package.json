@@ -22,8 +22,8 @@
     "@tanstack/react-query": "*",
     "@tanstack/react-router": "*",
     "@trpc/client": "*",
-    "@trpc/server": "*",
     "@trpc/react-query": "*",
+    "@trpc/server": "*",
     "react": "*",
     "react-dom": "*",
     "react-hook-form": "*",
@@ -31,8 +31,8 @@
     "zustand": "*"
   },
   "devDependencies": {
-    "@tanstack/router-plugin": "*",
     "@tanstack/router-cli": "*",
+    "@tanstack/router-plugin": "*",
     "@types/react": "*",
     "@types/react-dom": "*",
     "@vitejs/plugin-react": "*",
@@ -40,6 +40,7 @@
     "eslint-plugin-react-compiler": ">=19.1.0-rc.2",
     "typescript": "*",
     "vite": "*",
+    "vite-plugin-pwa": "*",
     "yaml": "*"
   }
 }
