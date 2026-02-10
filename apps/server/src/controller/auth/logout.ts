@@ -11,6 +11,9 @@ export const logout = async ({ ctx }: Input) => {
   if (!ctx.user) {
     throw new Error("User not found");
   }
-  await db.update(users).set({ token: null }).where(eq(users.id, ctx.user.id));
-  return { success: true };
+  const result = await db
+    .update(users)
+    .set({ token: null })
+    .where(eq(users.id, ctx.user.id));
+  return { success: result.rowCount === 1 };
 };

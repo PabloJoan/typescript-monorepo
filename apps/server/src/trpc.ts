@@ -3,9 +3,12 @@ import * as trpcExpress from "@trpc/server/adapters/express";
 import jwt from "jsonwebtoken";
 import { db } from "./db";
 import { users } from "./db/schema";
-import { eq } from "drizzle-orm";
+import { eq, and } from "drizzle-orm";
 
-const JWT_SECRET = process.env.JWT_SECRET || "default_secret_for_dev";
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+  throw new Error("JWT_SECRET is not defined in the env.");
+}
 
 export const createContext = async ({
   req,
@@ -22,12 +25,12 @@ export const createContext = async ({
   try {
     const decoded = jwt.verify(token, JWT_SECRET) as {
       userId: string;
-      accountHolderUid: string;
     };
 
     if (decoded.userId) {
       user = await db.query.users.findFirst({
-        where: eq(users.id, decoded.userId),
+        columns: { id: true, email: true, name: true, token: true },
+        where: and(eq(users.id, decoded.userId), eq(users.token, token)),
       });
     }
   } catch (err) {
