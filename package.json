@@ -21,6 +21,7 @@
     "eslint-plugin-react-compiler": ">=19.1.0-rc.2",
     "eslint-plugin-react-hooks": "*",
     "eslint-plugin-react-refresh": "*",
+    "eslint-plugin-drizzle": "*",
     "globals": "*",
     "prettier": "*",
     "typescript": "*",

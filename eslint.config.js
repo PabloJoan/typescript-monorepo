@@ -8,6 +8,7 @@ import reactCompiler from "eslint-plugin-react-compiler";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import query from "@tanstack/eslint-plugin-query";
 import prettier from "eslint-config-prettier";
+import drizzle from "eslint-plugin-drizzle";
 
 export default [
   {
@@ -32,22 +33,14 @@ export default [
       ecmaVersion: "latest",
       globals: globals.browser,
     },
-    plugins: {
-      "react-hooks": reactHooks,
-      "react-refresh": reactRefresh,
-    },
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
       "@typescript-eslint/no-unused-vars": [
         "warn",
         { argsIgnorePattern: "^_" },
       ],
       "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
       "@typescript-eslint/no-non-null-assertion": "warn",
+      "no-console": "warn",
     },
   },
 
@@ -75,6 +68,8 @@ export default [
     },
     plugins: {
       "react-compiler": reactCompiler,
+      "react-hooks": reactHooks,
+      "react-refresh": reactRefresh,
     },
     settings: {
       react: {
@@ -87,6 +82,11 @@ export default [
       ],
     },
     rules: {
+      ...reactHooks.configs.recommended.rules,
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true },
+      ],
       "react/prop-types": "off",
       "react-compiler/react-compiler": "error",
     },
@@ -100,8 +100,18 @@ export default [
         ...globals.node,
       },
     },
+    plugins: {
+      drizzle: drizzle,
+    },
     rules: {
-      "no-console": "warn",
+      "drizzle/enforce-delete-with-where": [
+        "error",
+        { drizzleObjectName: ["db"] },
+      ],
+      "drizzle/enforce-update-with-where": [
+        "error",
+        { drizzleObjectName: ["db"] },
+      ],
     },
   },
 

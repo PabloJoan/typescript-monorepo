@@ -36,7 +36,7 @@ function Login() {
     },
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.SubmitEvent) => {
     e.preventDefault();
     if (!uuid) {
       setError("UUID is required");
