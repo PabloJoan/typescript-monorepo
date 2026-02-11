@@ -45,13 +45,13 @@ function AuthWrapper() {
 
 export function App() {
   const [queryClient] = useState(() => new QueryClient());
-  const token = useAuthStore((state) => state.token);
   const [trpcClient] = useState(() =>
     trpc.createClient({
       links: [
         httpBatchLink({
           url: `${import.meta.env.VITE_BACKEND_URL}/trpc`,
           headers() {
+            const token = useAuthStore.getState().token;
             if (token) {
               return {
                 Authorization: token,
